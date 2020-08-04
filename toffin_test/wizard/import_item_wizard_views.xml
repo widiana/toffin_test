@@ -1,0 +1,39 @@
+<odoo>
+	<data>
+		
+	    <record id="import_items_wizard_form_view" model="ir.ui.view">
+			<field name="name">import.item.wizard.form</field>
+			<field name="model">import.item.wizard</field>
+			<field name="type">form</field>
+			<field name="arch" type="xml">
+				<form string="Import Items">		        	
+					<group col="2">
+		        		<field name="file_data" filename="filename"/>
+		        	</group>
+	                <footer>
+	                    <button name="action_import" type="object" string="Import" class="oe_highlight"/> or 
+	                    <button string="Cancel" class="oe_link" special="cancel"/>
+	                </footer>
+		          	
+		        </form>
+	    	</field>
+	    </record>
+
+	    <record id="action_import_items_wizard" model="ir.actions.act_window">
+			<field name="name">Import Items</field>
+			<field name="type">ir.actions.act_window</field>
+			<field name="res_model">import.item.wizard</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">form</field>
+			<field name="view_id" ref="import_items_wizard_form_view"/>
+			<field name="target">new</field>
+	    </record>
+
+        <menuitem id="import_item_menu"
+            name="Import Items"
+            parent="toffin_test.menu_toffin"
+            action="action_import_items_wizard"
+            sequence="30"/>
+		
+	</data>
+</odoo>
